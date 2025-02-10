@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Inventory Management System</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('products') }}">Products</a>
+            <a href="{{ url_for('suppliers') }}">Suppliers</a>
+            <a href="{{ url_for('transactions') }}">Transactions</a>
+            {% if current_user.Role == 'admin' %}
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome, {{ user.Username }}</h2>
+        <p>Your role is: {{ user.Role }}</p>
+        <ul>
+            <li class="success">Login successful!</li>
+        </ul>
+    </main>
+</body>
+</html>

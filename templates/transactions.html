@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Manage Transactions</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Type</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.TransactionID }}</td>
+            <td>{{ transaction.ProductID }}</td>
+            <td>{{ transaction.Quantity }}</td>
+            <td>{{ transaction.Type }}</td>
+            <td>{{ transaction.Date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Add Transaction</h3>
+<form method="POST">
+    <label for="product_id">Product ID</label>
+    <select id="product_id" name="product_id" required>
+        {% for product in products %}
+        <option value="{{ product.ProductID }}">{{ product.Name }}</option>
+        {% endfor %}
+    </select>
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" required>
+    <label for="type">Type</label>
+    <select id="type" name="type" required>
+        <option value="Add">Add</option>
+        <option value="Remove">Remove</option>
+    </select>
+    <button type="submit">Add Transaction</button>
+</form>
+{% endblock %}
