@@ -57,17 +57,22 @@ sudo chmod u+w app.py
 
 Update the SQLAlchemy database URI to use your RDS MySQL database:
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>:<port>/<database_name>'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@hostname:port/database_name'
 
 Where:
 
 <username>: Your MySQL database username (e.g., admin).
+
 <password>: The password for your MySQL database.
+
 <hostname>: The endpoint of your RDS instance (e.g., inventorydb.c70g46kaqjbm.us-east-1.rds.amazonaws.com).
+
 <port>: The port on which your MySQL server is listening (typically 3306 for MySQL).
+
 <database_name>: The name of your database (e.g., inventory_db).
 
 Example:
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:Password123@inventorydb.c096hbrrwojq.us-east-1.rds.amazonaws.com:3306/inventory_db'
 
 
