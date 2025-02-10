@@ -8,7 +8,7 @@ from functools import wraps
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Yourpassword@localhost/inventory_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<username>:<password>@<hostname>:<port>/<database_name>'
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 # Initialize extensions
@@ -251,4 +251,4 @@ if __name__ == '__main__':
             db.session.commit()
             print('Default admin user created: Username=admin, Password=admin123')
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
